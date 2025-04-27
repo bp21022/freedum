@@ -13,14 +13,12 @@ const routes: Routes = [
   },
   {
     path: 'tasks',
-    loadChildren: () => import('./task-list/task-list.module').then( m => m.TaskListPageModule)
+    loadComponent: () => import('./task-list/task-list.page').then(m => m.TaskListPage) // ここloadComponentね！
   }
 ];
 
 @NgModule({
-  imports: [
-    RouterModule.forRoot(routes, { preloadingStrategy: PreloadAllModules })
-  ],
-  exports: [RouterModule]
+  imports: [RouterModule.forRoot(routes, { preloadingStrategy: PreloadAllModules })],
+  exports: [RouterModule] // これも必要！
 })
-export class AppRoutingModule {}
+export class AppRoutingModule {} // ←exportつけるの忘れずに！！
